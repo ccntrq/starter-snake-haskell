@@ -1,0 +1,54 @@
+name: starter-snake-haskell
+version: 0.1.0
+license: BSD3
+author: "Alexander Pankoff"
+maintainer: "ccntrq@screenri.de"
+copyright: "2021 Alexander Pankoff"
+
+extra-source-files:
+  - README.md
+  - LICENSE
+
+dependencies:
+  - aeson
+  - base
+  - containers
+  - scotty
+  - text
+
+library:
+  source-dirs: src
+  ghc-options:
+    - -Wall
+    - -Werror
+    - -O2
+  default-extensions:
+    - OverloadedStrings
+
+executables:
+  starter-snake-haskell-exe:
+    main: Main.hs
+    source-dirs: app
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+      - -Wall
+      - -Werror
+      - -O2
+    default-extensions:
+      - OverloadedStrings
+    dependencies:
+      - starter-snake-haskell
+
+tests:
+  starter-snake-haskell:
+    main: Spec.hs
+    source-dirs: test
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+      - -Wall
+    dependencies:
+      - starter-snake-haskell
