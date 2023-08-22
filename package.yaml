@@ -1,27 +1,30 @@
 name: starter-snake-haskell
-version: 0.1.0
+version: 1.0.0
+synopsis: A Haskell Battlesnake starter
+description: See README at <https://github.com/ccntrq/starter-snake-haskell>
+category: Game, Web
 license: BSD3
-author: "Alexander Pankoff"
-maintainer: "ccntrq@screenri.de"
+author: "Alexander Pankoff <ccntrq@screenri.de"
+maintainer: "Alexander Pankoff <ccntrq@screenri.de>"
 copyright: "2021 Alexander Pankoff"
+github: ccntrq/starter-snake-haskell
 
 extra-source-files:
   - README.md
+  - CHANGELOG.md
   - LICENSE
 
 dependencies:
-  - aeson
-  - base
-  - containers
-  - scotty
-  - text
+  - base >= 4.13 && < 5
+  - aeson >= 1.4 && < 3
+  - containers >= 0.6 && < 1
+  - scotty >= 0.11 && < 1
+  - text >= 1.2 && < 2
 
 library:
   source-dirs: src
   ghc-options:
     - -Wall
-    - -Werror
-    - -O2
   default-extensions:
     - OverloadedStrings
 
@@ -34,8 +37,6 @@ executables:
       - -rtsopts
       - -with-rtsopts=-N
       - -Wall
-      - -Werror
-      - -O2
     default-extensions:
       - OverloadedStrings
     dependencies:

@@ -12,9 +12,10 @@ import Data.Aeson
   )
 import GHC.Generics
 
+-- | Represents a coordinate on the game board.
 data Coordinate = Coordinate
-  { coordX :: Integer,
-    coordY :: Integer
+  { coordX :: Integer, -- ^ The X coordinate (0 indexed, from left to right)
+    coordY :: Integer -- ^ The Y coordinate (0 indexed, from bottom to top)
   }
   deriving (Show, Eq, Generic)
 

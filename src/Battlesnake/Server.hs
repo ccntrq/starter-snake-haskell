@@ -1,4 +1,4 @@
-module Battlesnake.Server where
+module Battlesnake.Server (GameRequestHandler, runBattlesnakeServer) where
 
 import Battlesnake.API.GameRequest
 import qualified Battlesnake.API.InfoResponse as Info
@@ -11,8 +11,17 @@ import System.IO (BufferMode(LineBuffering), hSetBuffering, stdout)
 import Text.Read (readMaybe)
 import Web.Scotty
 
+
+-- | A handler for a battlesnake server request.
 type GameRequestHandler a = GameRequest -> IO a
 
+{- |
+  Run a battlesnake server. Runs the server on the port specified by the environment variable "PORT" or port 3000 if the variable is not set.
+  * A "Battlesnake.API.InfoResponse" to be returned when the server receives an info request.
+  * A 'GameRequestHandler' to be called when the server receives a start request.
+  * A 'GameRequestHandler' to be called when the server receives a move request.
+  * A 'GameRequestHandler' to be called when the server receives an end request.
+-}
 runBattlesnakeServer ::
   Info.InfoResponse ->
   GameRequestHandler () ->
