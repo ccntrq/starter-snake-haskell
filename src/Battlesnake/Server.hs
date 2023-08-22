@@ -7,6 +7,7 @@ import Control.Monad.IO.Class (liftIO)
 import Data.Functor ((<&>))
 import Data.Maybe (fromMaybe)
 import System.Environment (lookupEnv)
+import System.IO (BufferMode(LineBuffering), hSetBuffering, stdout)
 import Text.Read (readMaybe)
 import Web.Scotty
 
@@ -19,6 +20,7 @@ runBattlesnakeServer ::
   GameRequestHandler () ->
   IO ()
 runBattlesnakeServer info startHandler moveHandler endHandler = do
+  hSetBuffering stdout LineBuffering
   envPort <- lookupEnv "PORT" <&> (readMaybe =<<)
   scotty (fromMaybe 3000 envPort) $
     routes
