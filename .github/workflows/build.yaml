@@ -1,0 +1,52 @@
+name: build
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: ${{ matrix.ghc-version }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        ghc-version: ["9.2"]
+
+    steps:
+      - name: 📥 Check out repository
+        uses: actions/checkout@v3
+
+      - name: 🚧 Set up GHC ${{ matrix.ghc-version }}
+        uses: haskell-actions/setup@v2
+        id: setup
+        with:
+          ghc-version: ${{ matrix.ghc-version }}
+          cabal-version: "latest"
+          cabal-update: true
+          enable-stack: true
+          stack-version: "latest"
+
+      - name: 🏗️ Restore cached dependencies
+        uses: actions/cache@v3
+        id: cache
+        env:
+          key: ${{ runner.os }}-ghc-${{ steps.setup.outputs.ghc-version }}-stack-${{ steps.setup.outputs.stack-version }}
+        with:
+          path: |
+            ~/.stack
+            .stack-work
+          key: ${{ env.key}}-plan-${{ hashFiles('stack.yaml', 'package.yaml') }}
+          restore-keys: ${{ env.key }}-
+
+      - name: ⚒️ Build
+        run: stack build
+
+      - name: 📖 Build documentation
+        run: stack haddock
+
+      - name: 📦 Package
+        run: stack sdist
