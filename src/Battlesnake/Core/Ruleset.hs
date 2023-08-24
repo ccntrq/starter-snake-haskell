@@ -8,7 +8,7 @@ import GHC.Generics
 
 {-|
   Information about the ruleset used in the game.
-  See: https://docs.battlesnake.com/api/objects/game
+  See: https://docs.battlesnake.com/api/objects/ruleset
 -}
 data Ruleset = Ruleset
   { name :: Text, -- ^ The name of the ruleset.
