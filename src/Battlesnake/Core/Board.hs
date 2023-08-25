@@ -12,11 +12,16 @@ import GHC.Generics
   See: https://docs.battlesnake.com/api/objects/board
 -}
 data Board = Board
-  { height :: Integer, -- ^ The height of the board
-    width :: Integer, -- ^ The width of the board
-    food :: [Coordinate], -- ^ A list of coordinates representing food locations
-    hazards :: [Coordinate], -- ^ A list of coordinates representing hazard locations
-    snakes :: [Battlesnake] -- ^ A list of all snakes on the board
+  { height :: Integer
+  -- ^ The height of the board
+  , width :: Integer
+  -- ^ The width of the board
+  , food :: [Coordinate]
+  -- ^ A list of coordinates representing food locations
+  , hazards :: [Coordinate]
+  -- ^ A list of coordinates representing hazard locations
+  , snakes :: [Battlesnake]
+  -- ^ A list of all snakes on the board
   }
   deriving (Show, Generic)
 

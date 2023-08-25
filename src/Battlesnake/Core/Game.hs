@@ -12,9 +12,12 @@ import GHC.Generics
   See: https://docs.battlesnake.com/api/objects/game
 -}
 data Game = Game
-  { id :: Text, -- ^ The ID of the game.
-    ruleset :: Ruleset, -- ^ The ruleset used in the game.
-    timeout :: Integer -- ^ The maximum time in milliseconds the server will wait for a response from your server.
+  { id :: Text
+  -- ^ The ID of the game.
+  , ruleset :: Ruleset
+  -- ^ The ruleset used in the game.
+  , timeout :: Integer
+  -- ^ The maximum time in milliseconds the server will wait for a response from your server.
   }
   deriving (Show, Eq, Generic)
 

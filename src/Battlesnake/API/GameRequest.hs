@@ -13,10 +13,14 @@ import GHC.Generics
   This contains all the information you need to determine your snakes next move.}
 -}
 data GameRequest = GameRequest
-  { game :: Game, -- ^ Information about the current game. (See "Battlesnake.Core.Game")
-    turn :: Integer, -- ^ The turn beeing played.
-    board :: Board, -- ^ The game board. (See "Battlesnake.Core.Board")
-    you :: Battlesnake -- ^ Your snake. (See "Battlesnake.Core.Battlesnake"")
+  { game :: Game
+  -- ^ Information about the current game. (See "Battlesnake.Core.Game")
+  , turn :: Integer
+  -- ^ The turn beeing played.
+  , board :: Board
+  -- ^ The game board. (See "Battlesnake.Core.Board")
+  , you :: Battlesnake
+  -- ^ Your snake. (See "Battlesnake.Core.Battlesnake"")
   }
   deriving (Show, Generic)
 

@@ -11,8 +11,10 @@ import GHC.Generics
   See: https://docs.battlesnake.com/api/objects/ruleset
 -}
 data Ruleset = Ruleset
-  { name :: Text, -- ^ The name of the ruleset.
-    version :: Text -- ^ The version of the ruleset.
+  { name :: Text
+  -- ^ The name of the ruleset.
+  , version :: Text
+  -- ^ The version of the ruleset.
   }
   deriving (Show, Eq, Generic)
 
