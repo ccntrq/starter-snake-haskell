@@ -14,17 +14,18 @@ main =
     moveHandler
     endHandler
 
-snakeInfo :: Info.InfoResponse
+snakeInfo :: IO Info.InfoResponse
 snakeInfo =
-  Info.InfoResponse
-    { Info.apiversion = "1",
-      -- Optional Customization:
-      Info.author = Nothing, -- TODO: Your Battlsnake username here
-      Info.color = Nothing, -- TODO: pesonalize
-      Info.head = Nothing, -- TODO: pesonalize
-      Info.tail = Nothing, -- TODO: pesonalize
-      Info.version = Nothing -- TODO: Version number or tag for your battlesnake
-    }
+  return
+    Info.InfoResponse
+      { Info.apiversion = "1"
+      , -- Optional Customization:
+        Info.author = Nothing -- TODO: Your Battlsnake username here
+      , Info.color = Nothing -- TODO: pesonalize
+      , Info.head = Nothing -- TODO: pesonalize
+      , Info.tail = Nothing -- TODO: pesonalize
+      , Info.version = Nothing -- TODO: Version number or tag for your battlesnake
+      }
 
 -- TODO:
 -- implement start handler if you need to allocate ressources or data at the

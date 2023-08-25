@@ -17,7 +17,7 @@ type GameRequestHandler a = GameRequest -> IO a
 {-|
   Run a battlesnake server. Runs the server on the port specified by the environment variable "PORT" or port 3000 if the variable is not set.
 
-  * A "Battlesnake.API.InfoResponse" to be returned when the server receives an info request.
+  * An IO action that returns a "Battlesnake.API.InfoResponse" which is run on info requests.
 
   * A 'GameRequestHandler' to be called when the server receives a start request.
 
@@ -26,7 +26,7 @@ type GameRequestHandler a = GameRequest -> IO a
   * A 'GameRequestHandler' to be called when the server receives an end request.
 -}
 runBattlesnakeServer
-  :: Info.InfoResponse
+  :: IO Info.InfoResponse
   -> GameRequestHandler ()
   -> GameRequestHandler MoveResponse
   -> GameRequestHandler ()
@@ -42,7 +42,7 @@ runBattlesnakeServer info startHandler moveHandler endHandler = do
       endHandler
 
 routes
-  :: Info.InfoResponse
+  :: IO Info.InfoResponse
   -> GameRequestHandler ()
   -> GameRequestHandler MoveResponse
   -> GameRequestHandler ()
@@ -53,8 +53,8 @@ routes info startHandler moveHandler endHandler = do
   post "/move" $ handleMoveRequest moveHandler
   post "/end" $ handleEndRequest endHandler
 
-handleInfoRequest :: Info.InfoResponse -> ActionM ()
-handleInfoRequest = json
+handleInfoRequest :: IO Info.InfoResponse -> ActionM ()
+handleInfoRequest info = liftIO info >>= json
 
 handleStartRequest :: GameRequestHandler () -> ActionM ()
 handleStartRequest handler = do
