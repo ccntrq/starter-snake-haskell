@@ -18,7 +18,7 @@ snakeInfo :: IO Info.InfoResponse
 snakeInfo =
   return
     Info.InfoResponse
-      { Info.apiversion = "1"
+      { Info.apiversion = Info.APIVersion1
       , -- Optional Customization:
         Info.author = Nothing -- TODO: Your Battlsnake username here
       , Info.color = Nothing -- TODO: pesonalize

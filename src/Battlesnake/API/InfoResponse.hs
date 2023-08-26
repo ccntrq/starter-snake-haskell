@@ -1,17 +1,24 @@
 {-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
 
 module Battlesnake.API.InfoResponse where
 
-import Data.Aeson (ToJSON)
+import Data.Aeson (ToJSON, Value (String), toJSON)
 import Data.Text
 import GHC.Generics
+
+-- | Supported versions of the Battlesnake API
+data APIVersion = APIVersion1 deriving (Show)
+
+instance ToJSON APIVersion where
+  toJSON APIVersion1 = String "1"
 
 {-|
   The response to an info request.
   This can be used to modify the appearance of your snake on the game board.
 -}
 data InfoResponse = InfoResponse
-  { apiversion :: Text
+  { apiversion :: APIVersion
   -- ^ The API version supported by the battlesnake server (currently 1).
   , author :: Maybe Text
   -- ^ The username of the author of the snake.
