@@ -2,6 +2,7 @@
 
 module Battlesnake.Core.Ruleset where
 
+import Battlesnake.Core.RulesetSettings (RulesetSettings)
 import Data.Aeson (FromJSON)
 import Data.Text
 import GHC.Generics
@@ -15,6 +16,7 @@ data Ruleset = Ruleset
   -- ^ The name of the ruleset.
   , version :: Text
   -- ^ The version of the ruleset.
+  , settings :: RulesetSettings
   }
   deriving (Show, Eq, Generic)
 
