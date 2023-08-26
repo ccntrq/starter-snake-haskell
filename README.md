@@ -35,7 +35,7 @@ executable myfirstapp
     main-is: Main.hs
     build-depends:
         ...
-        starter-snake-haskell ^>=1.0.0
+        starter-snake-haskell ^>=1.1.0
 ```
 
 ### With stack
@@ -48,7 +48,7 @@ packages:
   - .
 
 extra-deps:
-- starter-snake-haskell-1.0.0
+- starter-snake-haskell-1.1.0
 ```
 
 ### Implementation

@@ -1,5 +1,5 @@
 name: starter-snake-haskell
-version: 1.0.0
+version: 1.1.0
 synopsis: A Haskell Battlesnake starter
 description: See README at <https://github.com/ccntrq/starter-snake-haskell>
 category: Game, Web
