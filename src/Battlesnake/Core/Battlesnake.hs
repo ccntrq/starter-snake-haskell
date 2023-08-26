@@ -3,6 +3,7 @@
 module Battlesnake.Core.Battlesnake where
 
 import Battlesnake.Core.Coordinate (Coordinate)
+import Battlesnake.Core.Customizations (Customizations)
 import Data.Aeson (FromJSON, ToJSON)
 import Data.Text
 import GHC.Generics
@@ -30,6 +31,8 @@ data Battlesnake = Battlesnake
   -- ^ The snake's last moves shout.
   , squad :: Maybe Text
   -- ^ The squad the snake is a part of (In squad mode).
+  , customizations :: Customizations
+  -- ^ The customizations of the snake
   }
   deriving (Show, Generic)
 
